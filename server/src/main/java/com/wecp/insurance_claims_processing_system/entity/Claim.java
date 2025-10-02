@@ -12,7 +12,9 @@ public class Claim {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String description;
+    private String status;
     private Date date;
 
     @ManyToOne
@@ -34,10 +36,11 @@ public class Claim {
     public Claim() {
     }
 
-    public Claim(Long id, String description, Date date, Policyholder policyholder, Adjuster adjuster,
+    public Claim(Long id, String description, String status, Date date, Policyholder policyholder, Adjuster adjuster,
             Underwriter underwriter, Investigation investigation) {
         this.id = id;
         this.description = description;
+        this.status = status;
         this.date = date;
         this.policyholder = policyholder;
         this.adjuster = adjuster;
@@ -67,6 +70,14 @@ public class Claim {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Policyholder getPolicyholder() {
